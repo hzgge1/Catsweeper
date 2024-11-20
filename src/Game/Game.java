@@ -18,7 +18,7 @@ public class Game {
 	
 	
 	public Game() {
-		this.gui = new GUI();
+		this.gui = new GUI(this);
 	}
 	
 	public void start() {
@@ -41,6 +41,10 @@ public class Game {
 	 */
 	public int getNumberLandmines() {
 		return numberLandmines;
+	}
+
+	public void newGame() {
+		gui.restart();
 	}
 
 }

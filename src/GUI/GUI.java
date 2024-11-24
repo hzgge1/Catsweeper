@@ -10,10 +10,11 @@ public class GUI {
 	
 	private Game game;
 	private JFrame frame;
-	private final int Menu_hight = 20;
-	private MenuBar menu;
-	private StatusPanel status;
-	private FrameSize frameSize = FrameSize.SMALL;
+	public final int MENUBAR_HIGHT = 30; // 菜单高度固定30p
+	public final int STATUSPANEL_HIGHT = 30; // 状态栏高度固定30p
+	private MenuBar menu; // 菜单
+	private StatusPanel status; // 状态栏
+	private FrameSize frameSize = FrameSize.SMALL; // 游戏界面尺寸
 	
 	public GUI(Game game) {
 		this.game = game;
@@ -28,7 +29,7 @@ public class GUI {
 		menu = new MenuBar(this);
 		frame.add(menu.getMenuBar(),BorderLayout.NORTH);
 		
-		status = new StatusPanel();
+		status = new StatusPanel(this);
 		frame.add(status.getStatusPanel(),BorderLayout.CENTER);
 	}
 
@@ -37,7 +38,7 @@ public class GUI {
 	}
 	
 	private void setDimension() {
-		this.setDimension(Menu_hight+frameSize.getWidth(), frameSize.getHight());
+		this.setDimension(MENUBAR_HIGHT+STATUSPANEL_HIGHT+frameSize.getWidth(), frameSize.getHight());
 	}
 	
 	private void setDimension(int width, int hight) {
@@ -52,8 +53,13 @@ public class GUI {
 		return frameSize.getWidth();
 	}
 	
+	public FrameSize getFrameSize() {
+		return frameSize;
+	}
+	
 	public void startNewGame() {
 		game.newGame();
+		status.restart();
 	}
 
 	public void restart() {

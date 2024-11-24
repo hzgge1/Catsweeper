@@ -2,7 +2,7 @@ package GUI;
 
 public enum FrameSize {
 	
-	SMALL(300,400),MEDIUM(800,500),LARGE(1000,800);
+	SMALL(350,420),MEDIUM(700,420),LARGE(1050,700);
 	
 	private final int width;
 	private final int hight;
@@ -18,6 +18,11 @@ public enum FrameSize {
 	
 	public int getHight() {
 		return hight;
+	}
+	
+	public int[][] getGridMatrix(){
+		return new int[width/35][hight/35];
+		
 	}
 	
 

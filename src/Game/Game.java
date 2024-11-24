@@ -44,7 +44,7 @@ public class Game {
 	}
 
 	public void newGame() {
-		gui.restart();
+
 	}
 
 }

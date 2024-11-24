@@ -11,8 +11,9 @@ public class StatusPanel {
 	private JPanel status;
 	private int counter = 600;
 
-	public StatusPanel() {
+	public StatusPanel(GUI gui) {
 		this.status = new JPanel();
+		status.setSize(gui.getFrameWidth(), gui.STATUSPANEL_HIGHT);
 		creatStatus();
 	}
 

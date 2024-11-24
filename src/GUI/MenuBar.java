@@ -15,7 +15,7 @@ public class MenuBar {
 	public MenuBar(GUI gui) {
 		this.gui = gui;
 		this.menu = new JMenuBar();
-		this.menu.setSize(gui.getFrameWidth(), 30);
+		this.menu.setSize(gui.getFrameWidth(), gui.MENUBAR_HIGHT);
 		creatButtons();
 	}
 	

@@ -13,7 +13,7 @@ public class StatusPanel {
 
 	public StatusPanel(GUI gui) {
 		this.status = new JPanel();
-		status.setSize(gui.getFrameWidth(), gui.STATUSPANEL_HIGHT);
+		status.setSize(gui.getFrameSize().getWidth(), gui.getFrameSize().STATUSPANEL_HEIGHT);
 		creatStatus();
 	}
 

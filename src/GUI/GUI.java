@@ -35,7 +35,11 @@ public class GUI {
 		status = new StatusPanel(this);
 		frame.add(status.getStatusPanel(),BorderLayout.SOUTH);
 	}
-
+	
+	public Game getGame() {
+		return game;
+	}
+	
 	@SuppressWarnings("deprecation")
 	public void show(){
 		addPanels();

@@ -14,12 +14,14 @@ public class Game {
 	}
 	
 	private GUI gui;
+	private GameMatrix gameMatrix; // 游戏矩阵
 	private int numberCats = 10; // 猫咪数量, 起始为10
 	
 	
 	public Game() {
 		this.gui = new GUI(this);
-		
+		this.gameMatrix = new GameMatrix(this);
+		start();
 	}
 	
 	public GUI getGUI() {
@@ -28,6 +30,10 @@ public class Game {
 	
 	public void start() {
 		gui.show();
+	}
+	
+	public void newGame() {
+
 	}
 	
 	/**
@@ -48,8 +54,8 @@ public class Game {
 		return numberCats;
 	}
 
-	public void newGame() {
-
+	public GameMatrix getGameMatrix() {
+		return gameMatrix;
 	}
 
 }

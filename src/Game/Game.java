@@ -14,11 +14,16 @@ public class Game {
 	}
 	
 	private GUI gui;
-	private int numberLandmines = 10; // 地雷数量, 起始为10
+	private int numberCats = 10; // 猫咪数量, 起始为10
 	
 	
 	public Game() {
 		this.gui = new GUI(this);
+		
+	}
+	
+	public GUI getGUI() {
+		return gui;
 	}
 	
 	public void start() {
@@ -26,12 +31,12 @@ public class Game {
 	}
 	
 	/**
-	 * 设置地雷数量,输入10到100之间的整数
-	 * @param numberLandmines 地雷数量(必须在10到100之间)
+	 * 设置猫咪数量,输入10到100之间的整数
+	 * @param numberCat 猫咪数量(必须在10到100之间)
 	 */
-	public void setNumberLandmines(int numberLandmines) {
-		if(numberLandmines<=100 && numberLandmines>=10) {
-			this.numberLandmines = numberLandmines;
+	public void setNumberCat(int numberCat) {
+		if(numberCat<=100 && numberCat>=10) {
+			this.numberCats = numberCat;
 		}
 	}
 	
@@ -39,8 +44,8 @@ public class Game {
 	 * 
 	 * @return 地雷的数量
 	 */
-	public int getNumberLandmines() {
-		return numberLandmines;
+	public int getNumberCats() {
+		return numberCats;
 	}
 
 	public void newGame() {

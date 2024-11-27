@@ -22,7 +22,7 @@ public class GUI {
 		frame.setLayout(new BorderLayout());
 		setDimension();
 		frame.setResizable(false);
-		addPanels();
+		
 	}
 	
 	private void addPanels() {
@@ -38,6 +38,7 @@ public class GUI {
 
 	@SuppressWarnings("deprecation")
 	public void show(){
+		addPanels();
 		this.frame.show();
 	}
 	

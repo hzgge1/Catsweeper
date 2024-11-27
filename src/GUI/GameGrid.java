@@ -16,6 +16,7 @@ public class GameGrid {
 
 	private GUI gui;
 	private int[][] gameMatrix;
+	private JButton[][] buttonMatrix;
 	private JPanel gridPanel;
 	
 	private ImageIcon icon1 = new ImageIcon(getClass().getClassLoader().getResource("Image/caticon3-2.png"));
@@ -24,6 +25,7 @@ public class GameGrid {
 	public GameGrid(GUI gui) {
 		this.gui = gui;
 		this.gameMatrix = gui.getFrameSize().getGridMatrix();
+		this.buttonMatrix = new JButton[gameMatrix.length][gameMatrix[0].length];
 		this.gridPanel = new JPanel();
 
 		// 设置网格布局，无间隙
@@ -38,12 +40,13 @@ public class GameGrid {
 	}
 
 	private void addButtons() {
-		for (int i = 0; i < gameMatrix.length; i++) {
-			for (int j = 0; j < gameMatrix[i].length; j++) {
+		for (int i = 0; i < buttonMatrix.length; i++) {
+			for (int j = 0; j < buttonMatrix[i].length; j++) {
 				JButton button = getButton(i, j);
 				// 设置按钮的大小为正方形
 				button.setPreferredSize(new Dimension(gui.getFrameSize().buttonSize, gui.getFrameSize().buttonSize));
 				gridPanel.add(button);
+				buttonMatrix[i][j] = button;
 			}
 		}
 	}
@@ -84,16 +87,70 @@ public class GameGrid {
 	}
 
 	private void buttonAction(JButton button) {
-		button.setIcon(icon2);
-		button.setPressedIcon(icon2); // 按下时的图标
-        button.setDisabledIcon(icon2); // 禁用时保持按下图标的效果
 		button.setEnabled(false); // 禁用按钮
+		int i = Integer.parseInt(button.getName().split(",")[0]); // 获取按钮所处位置的行
+		int j = Integer.parseInt(button.getName().split(",")[1]); // 获取按钮所处位置的列
+		if(gui.getGame().getGameMatrix().isCat(i,j)) {
+			button.setIcon(icon2);
+			button.setPressedIcon(icon2); // 按下时的图标
+	        button.setDisabledIcon(icon2); // 禁用时保持按下图标的效果
+		}else {
+			int x = gui.getGame().getGameMatrix().getNumberOfCatsInNineSquareGrid(i,j);
+			if(x==0) {
+				ClickTheNineSquareButtons(i,j);
+			}else {				
+				button.setText(""+x);
+			}
+		}
+	}
 
-//		button.setText(button.getName()); // 设置按钮文本
+	private void ClickTheNineSquareButtons(int i, int j) {
+	    // 标记按钮已处理
+	    buttonMatrix[i][j].setEnabled(false);
+
+	    // 检查九宫格内的所有邻居，包括当前按钮
+	    for (int dx = -1; dx <= 1; dx++) {
+	        for (int dy = -1; dy <= 1; dy++) {
+	            int newI = i + dx;
+	            int newJ = j + dy;
+
+	            // 确保新的坐标在矩阵范围内
+	            if (newI >= 0 && newI < buttonMatrix.length && newJ >= 0 && newJ < buttonMatrix[i].length) {
+	                // 如果按钮仍然是可用的
+	                if (buttonMatrix[newI][newJ].isEnabled()) {
+	                    // 如果九宫格中的位置是0，递归处理该位置
+	                    if (gui.getGame().getGameMatrix().getNumberOfCatsInNineSquareGrid(newI, newJ) == 0) {
+	                        ClickTheNineSquareButtons(newI, newJ);  // 递归处理值为0的按钮
+	                    } else {
+	                        revealButton(newI, newJ);  // 仅揭示按钮，不递归
+	                    }
+	                }
+	            }
+	        }
+	    }
+	}
+
+
+	// 辅助方法：揭示按钮的内容
+	private void revealButton(int i, int j) {
+	    JButton button = buttonMatrix[i][j];
+	    int value = gui.getGame().getGameMatrix().getNumberOfCatsInNineSquareGrid(i, j);
+	    if (value == 0) {
+	        button.setText(""); // 值为0时，显示为空
+	    } else {
+	        button.setText(String.valueOf(value)); // 显示周围猫的数量
+	    }
+	    button.setEnabled(false); // 禁用按钮
+	}
+	
+	private void removeAllMouseListener(int i, int j) {
+		JButton button = buttonMatrix[i][j];
 		// 移除所有鼠标监听器
 	    for (MouseListener adapter : button.getMouseListeners()) {
 	        button.removeMouseListener(adapter);
 	    }
-
 	}
+
+
+	
 }

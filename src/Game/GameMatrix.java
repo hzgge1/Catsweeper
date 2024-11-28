@@ -7,9 +7,7 @@ public class GameMatrix {
 
 	public GameMatrix(Game game) {
 		this.game = game;
-		this.gameMatrix = game.getGUI().getFrameSize().getGridMatrix();
-		creatCatInMatrix();
-		putNumberOfCatsInTheNineSquareGrid();
+		creatNewGameMatrix();
 	}
 
 	/**
@@ -64,6 +62,15 @@ public class GameMatrix {
 			}
 		}
 		return count;
+	}
+	
+	/**
+	 * 创建新的游戏矩阵
+	 */
+	public void creatNewGameMatrix() {
+		this.gameMatrix = game.getGUI().getFrameSize().getGridMatrix();
+		creatCatInMatrix();
+		putNumberOfCatsInTheNineSquareGrid();
 	}
 
 	/**

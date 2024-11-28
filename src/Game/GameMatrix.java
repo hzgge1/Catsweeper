@@ -2,8 +2,8 @@ package Game;
 
 public class GameMatrix {
 
-	private Game game;
-	private int[][] gameMatrix;
+	private Game game; 
+	private int[][] gameMatrix; // 游戏矩阵
 
 	public GameMatrix(Game game) {
 		this.game = game;

@@ -10,7 +10,6 @@ public class Game {
 	 */
 	public static void main(String[] args) {
 		Game game = new Game();
-		game.start();
 	}
 	
 	private GUI gui;
@@ -21,19 +20,23 @@ public class Game {
 	public Game() {
 		this.gui = new GUI(this);
 		this.gameMatrix = new GameMatrix(this);
-		start();
+		gui.show();
 	}
 	
+	/**
+	 * 获取游戏界面
+	 * @return 输出GUI类, 游戏界面
+	 */
 	public GUI getGUI() {
 		return gui;
 	}
 	
-	public void start() {
-		gui.show();
-	}
-	
+	/**
+	 * 创建新的游戏
+	 */
 	public void newGame() {
-
+		gameMatrix.creatNewGameMatrix();
+		gui.restart();
 	}
 	
 	/**
@@ -47,13 +50,17 @@ public class Game {
 	}
 	
 	/**
-	 * 
-	 * @return 地雷的数量
+	 * 获取猫咪数量
+	 * @return 输出Integer类, 猫咪的数量
 	 */
 	public int getNumberCats() {
 		return numberCats;
 	}
-
+	
+	/**
+	 * 获取游戏矩阵
+	 * @return 输出GameMatrix类, 游戏矩阵
+	 */
 	public GameMatrix getGameMatrix() {
 		return gameMatrix;
 	}

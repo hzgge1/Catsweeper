@@ -16,7 +16,10 @@ public class StatusPanel {
 		status.setSize(gui.getFrameSize().getWidth(), gui.getFrameSize().STATUSPANEL_HEIGHT);
 		creatStatus();
 	}
-
+	
+	/**
+	 * 创建状态栏
+	 */
 	private void creatStatus() {
 		status.setLayout(new FlowLayout(FlowLayout.CENTER));
 		JLabel times = new JLabel("剩余时间:" + counter);
@@ -31,11 +34,18 @@ public class StatusPanel {
 		});
 		timer.start();
 	}
-
+	
+	/**
+	 * 获取状态栏
+	 * @return 输出JPanel类, 状态栏
+	 */
 	public JPanel getStatusPanel() {
 		return status;
 	}
 
+	/**
+	 * 重置计时时间
+	 */
 	public void restart() {
 		counter = 601;
 	}

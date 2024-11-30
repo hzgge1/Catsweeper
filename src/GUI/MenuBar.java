@@ -18,6 +18,9 @@ public class MenuBar {
 		creatButtons();
 	}
 	
+	/**
+	 * 创建游戏菜单的按钮
+	 */
 	private void creatButtons() {
 		JMenu option = new JMenu("菜单");
 		JMenuItem newGame = new JMenuItem("新游戏");
@@ -61,6 +64,10 @@ public class MenuBar {
 		menu.add(help);
 	}
 	
+	/**
+	 * 获取游戏菜单
+	 * @return 输出JMenuBar类, 游戏菜单
+	 */
 	public  JMenuBar getMenuBar() {
 		return menu;
 	}

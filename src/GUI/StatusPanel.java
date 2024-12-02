@@ -71,6 +71,9 @@ public class StatusPanel {
 		counter = 601;
 	}
 	
+	/**
+	 * 停止计时
+	 */
 	public void timerStop() {
 		timer.stop();
 	}

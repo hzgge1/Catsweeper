@@ -17,12 +17,13 @@ public class GUI {
 	
 	public GUI(Game game) {
 		this.game = game;
-		this.frame = new JFrame();
+		this.frame = new JFrame("ฅ>ω<ฅ 扫猫");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		setDimension();
 		frame.setResizable(false);
 		
+		frame.setLocationRelativeTo(null);
 	}
 	
 	private void addPanels() {
@@ -68,10 +69,17 @@ public class GUI {
 	}
 
 	public void restart() {
+		// 创建新游戏界面
 		frame.remove(gameGrid.getGridPanel());
 		gameGrid.creatStatusPanel();
 		frame.add(gameGrid.getGridPanel(), BorderLayout.CENTER);
+		
+		// 创建新状态界面
+		frame.remove(status.getStatusPanel());
+		status.creatStatus();
+		frame.add(status.getStatusPanel(), BorderLayout.SOUTH);
 		status.restart();
+		
 		
 		frame.revalidate();
 		frame.repaint();

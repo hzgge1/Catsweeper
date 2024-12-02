@@ -8,19 +8,22 @@ import javax.swing.*;
 
 public class StatusPanel {
 
+	private GUI gui;
 	private JPanel status;
 	private int counter = 600;
 
 	public StatusPanel(GUI gui) {
-		this.status = new JPanel();
-		status.setSize(gui.getFrameSize().getWidth(), gui.getFrameSize().STATUSPANEL_HEIGHT);
+		this.gui = gui;
 		creatStatus();
 	}
 	
 	/**
 	 * 创建状态栏
 	 */
-	private void creatStatus() {
+	public void creatStatus() {
+		this.status = new JPanel();
+		status.setSize(gui.getFrameSize().getWidth(), gui.getFrameSize().STATUSPANEL_HEIGHT);
+		
 		status.setLayout(new FlowLayout(FlowLayout.CENTER));
 		JLabel times = new JLabel("剩余时间:" + counter);
 		status.add(times);
@@ -33,6 +36,19 @@ public class StatusPanel {
 			}
 		});
 		timer.start();
+		
+		JLabel pWin = new JLabel("地雷数量:"+gui.getGame().getNumberCats()+" 游戏难度:"+getGameLevel());
+		status.add(pWin);
+		
+	}
+	
+	private String getGameLevel() {
+		double p = gui.getGame().getNumberCats() / (gui.getFrameSize().getNumCols()*gui.getFrameSize().getNumRows());
+		if(p <= 0.10) return "简单";
+		else if(p <= 0.20) return "中等";
+		else if(p <= 0.30) return "困难";
+		else if(p <= 0.5) return "极难";
+		else return "小子你不行的 两个中至少有一个是";
 	}
 	
 	/**

@@ -24,6 +24,13 @@ public class GameGrid {
 
 	public GameGrid(GUI gui) {
 		this.gui = gui;
+		creatStatusPanel();
+	}
+
+	/**
+	 * 创建游戏界面
+	 */
+	public void creatStatusPanel() {
 		this.gameMatrix = gui.getFrameSize().getGridMatrix();
 		this.buttonMatrix = new JButton[gameMatrix.length][gameMatrix[0].length];
 		this.gridPanel = new JPanel();
@@ -37,6 +44,7 @@ public class GameGrid {
 		gridPanel.setPreferredSize(new Dimension(buttonSize * gameMatrix[0].length, // 宽度
 				buttonSize * gameMatrix.length // 高度
 		));
+
 	}
 
 	/**
@@ -99,6 +107,7 @@ public class GameGrid {
 
 	/**
 	 * 按钮左键点击时行为
+	 * 
 	 * @param button 按钮
 	 */
 	private void handleLeftClick(JButton button) {
@@ -123,9 +132,10 @@ public class GameGrid {
 	}
 
 	/**
-	 * 按钮右键点击时行为 
+	 * 按钮右键点击时行为
+	 * 
 	 * @param button 按钮
-	 * @param type 类型
+	 * @param type   类型
 	 */
 	private void handleRightClick(JButton button, int type) {
 		switch (type) {
@@ -140,9 +150,10 @@ public class GameGrid {
 		}
 		}
 	}
-	
+
 	/**
 	 * 以当前按钮为中心, 点击九宫格内另外八个按钮
+	 * 
 	 * @param i 按钮的行
 	 * @param j 按钮的列
 	 */
@@ -180,10 +191,10 @@ public class GameGrid {
 			}
 		}
 	}
-	
-	
+
 	/**
 	 * 根据游戏数据, 显示按钮
+	 * 
 	 * @param i 按钮的行
 	 * @param j 按钮的列
 	 */
@@ -200,9 +211,10 @@ public class GameGrid {
 		button.setEnabled(false); // 禁用按钮
 		removeAllMouseListeners(button);
 	}
-	
+
 	/**
 	 * 移除按钮的所有鼠标监听器
+	 * 
 	 * @param button 需要移除鼠标监听器的按钮
 	 */
 	private void removeAllMouseListeners(JButton button) {
@@ -212,4 +224,5 @@ public class GameGrid {
 		}
 
 	}
+
 }

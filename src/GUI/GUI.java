@@ -68,6 +68,12 @@ public class GUI {
 	}
 
 	public void restart() {
+		frame.remove(gameGrid.getGridPanel());
+		gameGrid.creatStatusPanel();
+		frame.add(gameGrid.getGridPanel(), BorderLayout.CENTER);
 		status.restart();
+		
+		frame.revalidate();
+		frame.repaint();
 	}
 }

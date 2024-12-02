@@ -42,6 +42,10 @@ public class StatusPanel {
 		
 	}
 	
+	/**
+	 * 为游戏计算难度
+	 * @return 输出String类, 游戏难度
+	 */
 	private String getGameLevel() {
 		double p = gui.getGame().getNumberCats() / (gui.getFrameSize().getNumCols()*gui.getFrameSize().getNumRows());
 		if(p <= 0.10) return "简单";

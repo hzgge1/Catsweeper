@@ -1,6 +1,7 @@
 package Game;
 
 import GUI.GUI;
+import GUI.GameGrid;
 
 public class Game {
 	
@@ -63,6 +64,11 @@ public class Game {
 	 */
 	public GameMatrix getGameMatrix() {
 		return gameMatrix;
+	}
+	
+	public void gameOver() {
+		gui.timerStop();
+		gui.throwDialog("游戏结束", "<html><h3>你死掉了</h3><p>你踩到猫, 被猫咪鲨掉了</p></html>");
 	}
 
 }

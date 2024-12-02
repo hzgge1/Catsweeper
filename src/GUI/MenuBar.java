@@ -45,21 +45,7 @@ public class MenuBar {
 		
 		JMenu help = new JMenu("帮助");
 		JMenuItem about = new JMenuItem("关于");
-		about.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JDialog dialog = new JDialog(gui.getGUIFrame(),"关于",true);
-				dialog.setSize(200, 200);
-				dialog.setLocationRelativeTo(null);
-				
-				JLabel label = new JLabel("<html><h3>扫猫</h3><p>版本 1.0<br>开发者: 小小王</p></html>", JLabel.CENTER);
-				dialog.add(label, BorderLayout.CENTER);
-				
-				dialog.setVisible(true);
-				
-			}
-		});
+		about.addActionListener(e -> gui.throwDialog("关于","<html><h3>扫猫</h3><p>版本 1.0<br>开发者: 小小王</p></html>"));
 		help.add(about);
 		menu.add(help);
 	}

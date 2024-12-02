@@ -2,7 +2,9 @@ package GUI;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import Game.Game;
 
@@ -83,5 +85,20 @@ public class GUI {
 		
 		frame.revalidate();
 		frame.repaint();
+	}
+	
+	public void throwDialog(String title, String text) {
+		JDialog dialog = new JDialog(frame,title,true);
+		dialog.setSize(200, 200);
+		dialog.setLocationRelativeTo(null);
+		
+		JLabel label = new JLabel(text, JLabel.CENTER);
+		dialog.add(label, BorderLayout.CENTER);
+		
+		dialog.setVisible(true);
+	}
+	
+	public void timerStop() {
+		status.timerStop();
 	}
 }

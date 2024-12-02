@@ -119,6 +119,8 @@ public class GameGrid {
 			button.setIcon(icon2);
 			button.setPressedIcon(icon2); // 按下时的图标
 			button.setDisabledIcon(icon2); // 禁用时保持按下图标的效果
+			setAllNotEnableds();
+			gui.getGame().gameOver();
 		} else {
 			int x = gui.getGame().getGameMatrix().getNumberOfCatsInNineSquareGrid(i, j);
 			if (x == 0) {
@@ -223,6 +225,14 @@ public class GameGrid {
 			button.removeMouseListener(listener);
 		}
 
+	}
+	
+	private void setAllNotEnableds() {
+		for (JButton[] jButtons : buttonMatrix) {
+			for (JButton jButton : jButtons) {
+				jButton.setEnabled(false);
+			}
+		}
 	}
 
 }

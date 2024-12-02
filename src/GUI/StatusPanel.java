@@ -11,6 +11,7 @@ public class StatusPanel {
 	private GUI gui;
 	private JPanel status;
 	private int counter = 600;
+	private Timer timer;
 
 	public StatusPanel(GUI gui) {
 		this.gui = gui;
@@ -28,7 +29,7 @@ public class StatusPanel {
 		JLabel times = new JLabel("剩余时间:" + counter);
 		status.add(times);
 
-		Timer timer = new Timer(1000, new ActionListener() {
+		timer = new Timer(1000, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				counter--;
@@ -68,5 +69,9 @@ public class StatusPanel {
 	 */
 	public void restart() {
 		counter = 601;
+	}
+	
+	public void timerStop() {
+		timer.stop();
 	}
 }

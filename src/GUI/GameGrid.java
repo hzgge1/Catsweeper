@@ -128,6 +128,7 @@ public class GameGrid {
 			} else {
 				button.setText(String.valueOf(x));
 			}
+			if(foundAllCat()) gui.getGame().gameWin();
 		}
 
 		removeAllMouseListeners(button);
@@ -227,12 +228,31 @@ public class GameGrid {
 
 	}
 	
+	/**
+	 * 设置所有按钮不可按
+	 */
 	private void setAllNotEnableds() {
 		for (JButton[] jButtons : buttonMatrix) {
 			for (JButton jButton : jButtons) {
 				jButton.setEnabled(false);
 			}
 		}
+	}
+	
+	/**
+	 * 检查是否找到了所有猫咪
+	 * 
+	 * @return输出boolean类, 找到所有猫咪返回true, 反则返货false
+	 */
+	private boolean foundAllCat() {
+		int numberButtonsNotEnabled = 0;
+		for (JButton[] jButtons : buttonMatrix) {
+			for (JButton jButton : jButtons) {
+				if(!jButton.isEnabled())
+					numberButtonsNotEnabled++;
+			}
+		}
+		return gui.getGame().getNumberCats() == numberButtonsNotEnabled;
 	}
 
 }

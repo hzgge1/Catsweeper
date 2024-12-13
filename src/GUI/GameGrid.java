@@ -130,9 +130,10 @@ public class GameGrid {
 				button.setText(String.valueOf(x));
 			}
 			
-			if(foundAllCat())
+			if(foundAllCat()) {
 				setAllNotEnableds();
-				gui.getGame().gameWin();
+				gui.getGame().gameWin();				
+			}
 		}
 
 		removeAllMouseListeners(button);

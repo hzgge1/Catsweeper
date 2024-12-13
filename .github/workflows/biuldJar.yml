@@ -23,5 +23,5 @@ jobs:
           mkdir bin
           javac -d bin src/**/*.java
           echo "Manifest-Version: 1.0" > MANIFEST.MF
-          echo "Main-Class: your.package.MainClass" >> MANIFEST.MF
-          jar cvfm YourProgram.jar MANIFEST.MF -C bin .
+          echo "Main-Class: Game.Main" >> MANIFEST.MF
+          jar cvfm CatsWeeper.jar MANIFEST.MF -C bin .

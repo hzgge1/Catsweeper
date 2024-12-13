@@ -1,7 +1,7 @@
 package Game;
 
 import GUI.GUI;
-import GUI.GameGrid;
+
 
 public class Game {
 	

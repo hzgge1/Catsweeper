@@ -122,13 +122,17 @@ public class GameGrid {
 			setAllNotEnableds();
 			gui.getGame().gameOver();
 		} else {
+			
 			int x = gui.getGame().getGameMatrix().getNumberOfCatsInNineSquareGrid(i, j);
 			if (x == 0) {
 				ClickTheNineSquareButtons(i, j);
 			} else {
 				button.setText(String.valueOf(x));
 			}
-			if(foundAllCat()) gui.getGame().gameWin();
+			
+			if(foundAllCat())
+				setAllNotEnableds();
+				gui.getGame().gameWin();
 		}
 
 		removeAllMouseListeners(button);
@@ -248,7 +252,7 @@ public class GameGrid {
 		int numberButtonsNotEnabled = 0;
 		for (JButton[] jButtons : buttonMatrix) {
 			for (JButton jButton : jButtons) {
-				if(!jButton.isEnabled())
+				if(jButton.isEnabled())
 					numberButtonsNotEnabled++;
 			}
 		}

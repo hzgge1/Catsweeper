@@ -70,5 +70,11 @@ public class Game {
 		gui.timerStop();
 		gui.throwDialog("游戏结束", "<html><h3>你死掉了</h3><p>你踩到猫, 被猫咪鲨掉了</p></html>");
 	}
+	
+	public void gameWin() {
+		gui.timerStop();
+		gui.throwDialog("游戏获胜", "<html><h3>获胜了</h3><p>恭喜你找到所有猫咪, 活了下来</p></html>");
+		
+	}
 
 }
